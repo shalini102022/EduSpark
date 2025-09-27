@@ -1,0 +1,510 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduSpark - Account Settings</title>
+  <link rel="stylesheet" href="setting.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header style="background: #1a3c34; color: white; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+    <div class="logo" style="font-size: 1.5rem; font-weight: bold; color: #ffd700;">Edu<span style="color: yellow;">Spark</span></div>
+    <nav style="display: flex; align-items: center; gap: 20px;">
+      <li style="list-style: none; margin: 0;"><a href="index1.html" style="color: white; text-decoration: none; transition: color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1);'" onmouseout="this.style.color='white'; this.style.transform='scale(1);'"> Home</a></li>
+      <li style="list-style: none; margin: 0;"><a href="grade.html" style="color: white; text-decoration: none; transition: color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1);'" onmouseout="this.style.color='white'; this.style.transform='scale(1);'">Grade Papers</a></li>
+      <li style="list-style: none; margin: 0;"><a href="papers.html" style="color: white; text-decoration: none; transition: color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1);'" onmouseout="this.style.color='white'; this.style.transform='scale(1);'">Papers</a></li>
+      <li style="list-style: none; margin: 0;"><a href="contact.html" style="color: white; text-decoration: none; transition: color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.color='#ffd700'; this.style.transform='scale(1.1);'" onmouseout="this.style.color='white'; this.style.transform='scale(1);'"> Contact us</a></li>
+    </nav>
+    <div class="gear-icon" style="font-size: 1.5rem; cursor: pointer;">&#9881;</div>
+  </header>
+
+  <section class="settings-container">
+    <div class="sidebar">
+      <button class="tab-btn active" onclick="showTab('general')">General</button>
+      <button class="tab-btn" onclick="showTab('notifications')"> Notifications</button>
+      <button class="tab-btn" onclick="showTab('security')">Security</button>
+      <button class="tab-btn" onclick="showTab('privacy')">Privacy</button>
+    </div>
+
+    <div class="settings-content">
+      <div id="general" class="tab-content active">
+        <h2>General Settings</h2>
+        <label>Language</label>
+        <select>
+          <option>English</option>
+          <option>Tamil</option>
+          <option>Sinhala</option>
+        </select>
+
+        <div class="theme-switch">
+          <label>Theme</label>
+          <div class="theme-options">
+            <button class="dark" onclick="setTheme('dark')">Dark</button>
+            <button class="light" onclick="setTheme('light')">Light</button>
+          </div>
+        </div>
+
+        <div class="autosave">
+          <label>Auto-Save work</label>
+          <input type="checkbox" checked />
+        </div>
+
+        <button class="save-btn" onclick="saveGeneralSettings()">Save All Settings</button>
+      </div>
+      <div id="popup-message" class="popup">✔ Settings Saved</div>
+
+      <div id="notifications" class="tab-content">
+        <h2>Notification Settings</h2>
+        <div class="notif-item">
+          <label>Email Notifications</label>
+          <input type="checkbox" checked />
+        </div>
+        <div class="notif-item">
+          <label>App Notifications</label>
+          <input type="checkbox" />
+        </div>
+        <div class="notif-item">
+          <label>Receive Reminders</label>
+          <input type="checkbox" checked />
+        </div>
+        <button class="save-btn" onclick="saveNotificationSettings()">💾 Save Notification Settings</button>
+      </div>
+
+      <div id="security" class="tab-content">
+        <h2>Security </h2>
+        
+        <div class="security-section">
+          <h3>Account Security</h3>
+          <div class="security-item">
+            <label for="current-password">Current Password</label>
+            <input type="password" id="current-password" placeholder="Enter current password">
+          </div>
+          <div class="security-item">
+            <label for="new-password">New Password</label>
+            <input type="password" id="new-password" placeholder="Enter new password">
+            <p class="password-strength">Password strength: <span id="strength-indicator">Weak</span></p>
+          </div>
+          <div class="security-item">
+            <label for="confirm-password">Confirm New Password</label>
+            <input type="password" id="confirm-password" placeholder="Confirm new password">
+          </div>
+          <button class="security-btn" onclick="updatePassword()">Update Password</button>
+        </div>
+        
+        <div id="passwordModal" class="modal">
+          <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-icon success">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="modal-icon error">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3 id="modal-title">Password Updated</h3>
+            <p id="modal-message">Your password has been updated successfully.</p>
+            <button id="modal-action-btn">Continue</button>
+          </div>
+        </div>
+        
+        <div class="security-section">
+          <h3>Two-Factor Authentication</h3>
+          <div class="toggle-item">
+            <div>
+              <label>Enable 2FA</label>
+              <p class="description">Add an extra layer of security to your account</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="action-item">
+          <div class="action-info">
+            <h3>Backup Codes</h3>
+            <p>Generate one-time use codes for emergency access</p>
+          </div>
+          <button class="btn-secondary" onclick="generateBackupCodes()">
+            <i class="fas fa-qrcode"></i> Generate Codes
+          </button>
+        </div>
+
+        <div id="backupCodesModal" class="modal">
+          <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('backupCodesModal')">&times;</span>
+            <div class="modal-icon">
+              <i class="fas fa-qrcode"></i>
+            </div>
+            <h3>Your Backup Codes</h3>
+            <div class="backup-codes-container">
+              <div class="backup-codes">
+                <span>1. XK34-9B2M-LP78</span>
+                <span>2. 7T9F-4R1Q-W6Y8</span>
+                <span>3. N5J2-H8K3-D1P9</span>
+                <span>4. 3M7B-6V1C-9X8Z</span>
+                <span>5. QW5E-7T8U-1I3O</span>
+              </div>
+            </div>
+            <p class="warning-text"><i class="fas fa-exclamation-triangle"></i> Save these codes in a secure place</p>
+            <button class="btn-primary" onclick="printBackupCodes()">
+              <i class="fas fa-print"></i> Print Codes
+            </button>
+            <button class="btn-secondary" onclick="closeModal('backupCodesModal')">
+              I've Saved Them
+            </button>
+          </div>
+        </div>
+        
+        <section class="security-section">
+          <h2><i class="fas fa-user-lock"></i> Account Actions</h2>
+          
+          <div class="action-item">
+            <div class="action-info">
+              <h3>Download Your Data</h3>
+              <p>Get a copy of all your EduSpark information</p>
+            </div>
+            <button class="btn-secondary" onclick="downloadMyData()">
+              <i class="fas fa-download"></i> Download Data
+            </button>
+          </div>
+          
+          <div class="action-item danger">
+            <div class="action-info">
+              <h3>Delete Account</h3>
+              <p>Permanently remove your account and all data</p>
+            </div>
+            <button class="btn-danger" onclick="confirmAccountDeletion()">
+              <i class="fas fa-trash-alt"></i> Delete Account
+            </button>
+          </div>
+        </section>
+
+        <div id="deleteAccountModal" class="modal">
+          <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('deleteAccountModal')">&times;</span>
+            <div class="modal-icon danger">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Confirm Account Deletion</h3>
+            <p>This action cannot be undone. All your data will be permanently deleted.</p>
+            
+            <div class="form-group">
+              <label for="confirm-email">Enter your email to confirm</label>
+              <input type="email" id="confirm-email" placeholder="your@email.com">
+            </div>
+            
+            <div class="form-group">
+              <label for="confirm-password">Enter your password</label>
+              <input type="password" id="confirm-password" placeholder="Current password">
+            </div>
+            
+            <div class="modal-actions">
+              <button class="btn-danger" onclick="deleteAccount()">
+                <i class="fas fa-trash-alt"></i> Permanently Delete
+              </button>
+              <button class="btn-secondary" onclick="closeModal('deleteAccountModal')">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="privacy" class="tab-content">
+        <h2><i class="fas fa-user-shield"></i> Privacy Settings</h2>
+        
+        <div class="privacy-section">
+          <h3>Profile Visibility</h3>
+          
+          <div class="privacy-option">
+            <div class="option-details">
+              <label>Public Profile</label>
+              <p class="description">Allow other users to find and view your profile</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="privacy-option">
+            <div class="option-details">
+              <label>Show Activity Status</label>
+              <p class="description">Display when you're actively using EduSpark</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="privacy-option">
+            <div class="option-details">
+              <label>Show Badges & Achievements</label>
+              <p class="description">Display your earned badges on your profile</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="privacy-section">
+          <h3>Data Sharing</h3>
+          
+          <div class="privacy-option">
+            <div class="option-details">
+              <label>Allow Data Collection</label>
+              <p class="description">Help improve EduSpark by sharing usage data</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="privacy-option">
+            <div class="option-details">
+              <label>Share Performance Analytics</label>
+              <p class="description">Allow anonymized sharing of your progress data</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="privacy-section">
+          <h3>Content Privacy</h3>
+          
+          <div class="privacy-option">
+            <div class="option-details">
+              <label>Make Past Papers Private</label>
+              <p class="description">Hide your completed papers from others</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+          
+          <div class="privacy-option">
+            <div class="option-details">
+              <label>Hide Scores</label>
+              <p class="description">Prevent others from seeing your test scores</p>
+            </div>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Study Smart ,Not Hard...</p>
+  </footer>
+
+  <script>
+    function showTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+
+      document.querySelector(`[onclick="showTab('${tabName}')"]`).classList.add('active');
+      document.getElementById(tabName).classList.add('active');
+    }
+    
+    function setTheme(mode) {
+      if (mode === 'dark') {
+        document.body.style.background = '#121212';
+        document.body.style.color = '#ffffff';
+        document.querySelector('.settings-container').style.background = '#1e1e1e';
+      } else {
+        document.body.style.background = '#ffffff';
+        document.body.style.color = '#000000';
+        document.querySelector('.settings-container').style.background = '#eeeeee';
+      }
+    }
+
+    function saveGeneralSettings() {
+      const language = document.querySelector('#general select').value;
+      const autosave = document.querySelector('#general .autosave input').checked;
+      showPopup(`✔ General settings saved\nLanguage: ${language}\nAuto-Save: ${autosave}`);
+    }
+
+    function saveNotificationSettings() {
+      const notifInputs = document.querySelectorAll('#notifications input');
+      const emailNotif = notifInputs[0].checked;
+      const appNotif = notifInputs[1].checked;
+      const reminderNotif = notifInputs[2].checked;
+
+      const message = `✔ Notification settings saved\nEmail: ${emailNotif ? 'On' : 'Off'}\nApp: ${appNotif ? 'On' : 'Off'}\nReminders: ${reminderNotif ? 'On' : 'Off'}`;
+      showPopup(message);
+    }
+
+    function showPopup(message) {
+      const popup = document.getElementById('popup-message');
+      popup.textContent = message;
+      popup.style.display = 'block';
+      
+      popup.style.animation = 'none';
+      popup.offsetHeight; 
+      popup.style.animation = '';
+      
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 3000);
+    }
+
+    function updatePassword() {
+      const currentPass = document.getElementById('current-password').value;
+      const newPass = document.getElementById('new-password').value;
+      const confirmPass = document.getElementById('confirm-password').value;
+      
+      if (!currentPass || !newPass || !confirmPass) {
+        showModal('Error', 'Please fill in all password fields', 'error');
+        return;
+      }
+      
+      if (newPass !== confirmPass) {
+        showModal('Error', 'New passwords do not match', 'error');
+        return;
+      }
+      
+      if (newPass.length < 8) {
+        showModal('Error', 'Password must be at least 8 characters', 'error');
+        return;
+      }
+
+      const btn = document.querySelector('.security-btn');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        const success = true; 
+        
+        if (success) {
+          showModal('Success', 'Password updated successfully!', 'success');
+          resetForm();
+        } else {
+          showModal('Error', 'Current password is incorrect', 'error');
+        }
+        
+        btn.innerHTML = 'Update Password';
+        btn.disabled = false;
+      }, 1500);
+    }
+
+    function showModal(title, message, type) {
+      const modal = document.getElementById('passwordModal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalMsg = document.getElementById('modal-message');
+      
+      modalTitle.textContent = title;
+      modalMsg.textContent = message;
+      
+      document.querySelectorAll('.modal-icon').forEach(icon => icon.style.display = 'none');
+      document.querySelector(`.modal-icon.${type}`).style.display = 'block';
+      
+      const actionBtn = document.getElementById('modal-action-btn');
+      actionBtn.style.background = type === 'success' ? '#5f5bc4' : '#f44336';
+      
+      modal.style.display = 'block';
+      
+      document.querySelector('.close-modal').onclick = () => modal.style.display = 'none';
+      actionBtn.onclick = () => modal.style.display = 'none';
+      window.onclick = (event) => {
+        if (event.target === modal) modal.style.display = 'none';
+      };
+    }
+
+    function resetForm() {
+      document.getElementById('current-password').value = '';
+      document.getElementById('new-password').value = '';
+      document.getElementById('confirm-password').value = '';
+      document.querySelector('.strength-bar').className = 'strength-bar';
+      document.querySelector('.strength-text').textContent = '';
+    }
+
+    function generateBackupCodes() {
+      const btn = document.querySelector('[onclick="generateBackupCodes()"]');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+      btn.disabled = true;
+      
+      setTimeout(() => {
+        showBackupCodes();
+        
+        btn.innerHTML = '<i class="fas fa-qrcode"></i> Generate Codes';
+        btn.disabled = false;
+      }, 1000);
+    }
+
+    function showBackupCodes() {
+      document.getElementById('backupCodesModal').style.display = 'block';
+    }
+
+    function printBackupCodes() {
+      const printContent = document.querySelector('.backup-codes').innerHTML;
+      const originalContent = document.body.innerHTML;
+      
+      document.body.innerHTML = `
+        <h2>EduSpark Backup Codes</h2>
+        <p>Generated on ${new Date().toLocaleDateString()}</p>
+        <div style="font-family: monospace; font-size: 1.2em; line-height: 2;">
+          ${printContent}
+        </div>
+        <p><strong>Important:</strong> Store these codes securely.</p>
+      `;
+      
+      window.print();
+      document.body.innerHTML = originalContent;
+    }
+
+    function downloadMyData() {
+      const btn = document.querySelector('[onclick="downloadMyData()"]');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+      btn.disabled = true;
+      
+      setTimeout(() => {
+        showModal('Data Download', 'Your data export has started. You will receive an email when ready.', 'success');
+        
+        btn.innerHTML = '<i class="fas fa-download"></i> Download Data';
+        btn.disabled = false;
+      }, 2000);
+    }
+
+    function confirmAccountDeletion() {
+      document.getElementById('deleteAccountModal').style.display = 'block';
+    }
+
+    function deleteAccount() {
+      const email = document.getElementById('confirm-email').value;
+      const password = document.getElementById('confirm-password').value;
+      
+      if (!email || !password) {
+        alert('Please enter both your email and password to confirm');
+        return;
+      }
+      
+      const btn = document.querySelector('[onclick="deleteAccount()"]');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
+      btn.disabled = true;
+      
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1500);
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+  </script>
+</body>
+</html>

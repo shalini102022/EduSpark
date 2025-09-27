@@ -1,0 +1,129 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Papers - EduSpark</title>
+    <link rel="stylesheet" href="grade.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Edu<span>Spark</span></div>
+        <nav>
+            <li><a href="index1.html">Home</a></li>
+            <li><a href="grade.html">Grade Papers</a></li>
+            <li><a href="papers.html">Papers</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+        </nav>
+        <div class="actions">
+            <button class="login-btn" id="loginButton">Login</button>
+            <span><a href="notifications.html"><span></span></a></span>
+            <span><a href="setting.html"><span>⚙️</span></a></span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Instant Paper Grading</h1>
+        <p>Upload your answer sheet and get your results and feedbacks.</p>
+    </section>
+    <section class="grading-section">
+        <div class="upload-area">
+            <h2>Upload your answer paper!</h2>
+            <div class="drop-zone">
+                <p>Drop your answer paper here<br>or click to browse files</p>
+                <input type="file" id="fileInput" style="display: none;" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" multiple>
+                <button class="choose-btn" id="chooseButton">Choose file</button>
+                <p>Supported formats: PDF, JPG, PNG, DOC, DOCX (Max size: 100MB)</p>
+            </div>
+        </div>
+        <div class="paper-details">
+            <h2>Paper Details</h2>
+            <input type="text" placeholder="O/L Paper" readonly>
+            <input type="text" placeholder="A/L Paper" readonly>
+            <select id="subjectSelect"></select>
+            <select id="yearSelect"></select>
+            <button class="start-grading-btn" id="startGradingButton">Start Grading</button>
+        </div>
+    </section>
+
+    <script>
+        
+        const subjects = ["Mathematics", "English"];
+        const years = ["2023", "2025"];
+
+      
+        const subjectSelect = document.getElementById("subjectSelect");
+        const yearSelect = document.getElementById("yearSelect");
+
+        const defaultSubjectOption = document.createElement("option");
+        defaultSubjectOption.value = "";
+        defaultSubjectOption.textContent = "Select the subject";
+        subjectSelect.appendChild(defaultSubjectOption);
+
+        subjects.forEach(subject => {
+            const option = document.createElement("option");
+            option.value = subject;
+            option.textContent = subject;
+            subjectSelect.appendChild(option);
+        });
+
+        
+        const defaultYearOption = document.createElement("option");
+        defaultYearOption.value = "";
+        defaultYearOption.textContent = "Select the year";
+        yearSelect.appendChild(defaultYearOption);
+
+      
+        years.forEach(year => {
+            const option = document.createElement("option");
+            option.value = year;
+            option.textContent = year;
+            yearSelect.appendChild(option);
+        });
+
+   
+        document.getElementById('loginButton').addEventListener('click', function() {
+            window.location.href = 'login1.html';
+        });
+
+   
+        document.getElementById('chooseButton').addEventListener('click', function() {
+            document.getElementById('fileInput').click();
+        });
+
+       
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const files = e.target.files;
+            if (files.length > 0) {
+                console.log('Selected files:', files);
+            }
+        });
+
+        document.getElementById('startGradingButton').addEventListener('click', function() {
+            const fileInput = document.getElementById('fileInput');
+            const subjectSelect = document.getElementById('subjectSelect');
+            const yearSelect = document.getElementById('yearSelect');
+
+            if (!fileInput.files.length) {
+                alert('Please select a file to grade.');
+                return;
+            }
+            if (subjectSelect.value === '') {
+                alert('Please select a subject.');
+                return;
+            }
+            if (yearSelect.value === '') {
+                alert('Please select a year.');
+                return;
+            }
+
+            console.log('Grading started with:', {
+                files: fileInput.files,
+                subject: subjectSelect.value,
+                year: yearSelect.value
+            });
+            alert('Grading process initiated. Check console for details. (This is a placeholder)');
+        });
+    </script>
+</body>
+</html>

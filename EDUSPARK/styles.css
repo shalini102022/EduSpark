@@ -1,0 +1,248 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+
+.navbar {
+  background-color: #1A3C34;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 30px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: yellow;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: yellow;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  align-items: left;
+}
+
+.login-btn {
+  background-color: yellow;
+  border: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero-section {
+  background: white;
+  color: black;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+}
+
+.get-started {
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.feature img {
+  width: 300px;
+}
+
+.feature h3 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Certificate Section */
+.certificate-section {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f9f9f9;
+}
+
+.certificate-img {
+  max-width: 500px;
+  margin-top: 50px;
+}
+
+.certificate-btn {
+  background-color: #1A3C34;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Analytics Section */
+.analytics {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.graph-placeholder {
+  margin-top: 20px;
+  background: #ccc;
+  height: 200px;
+  width: 80%;
+  margin-inline: auto;
+  border-radius: 10px;
+}
+
+/* Chatbot Section */
+.chatbot {
+  background: #f0f0f0;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.chatbot-box {
+  background: white;
+  display: inline-block;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: left;
+  width: 300px;
+}
+
+.bot-message, .user-message {
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.bot-message {
+  background: #e0ffe0;
+}
+
+.user-message {
+  background: #d0d0ff;
+}
+
+/* Admin Panel */
+.admin-panel {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.admin-features {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+/* CTA */
+.cta {
+  background: white;
+  color: black;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.cta-btn {
+  background: #ffdb4d;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+/* Footer */
+.footer {
+  background-color: #1A3C34;
+  color: white;
+  padding: 40px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-logo {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-logo .logo {
+  font-size: 1.5rem;
+}
+
+.footer-logo p {
+  margin: 10px 0;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin: 5px 0;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-contact p {
+  line-height: 1.5;
+}
+
+.social-icons span {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}

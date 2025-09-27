@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to EduSpark</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1A3C34;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            width: 80%;
+            max-width: 1000px;
+        }
+        .login-section {
+            flex: 1;
+            padding: 40px;
+        }
+        .login-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .login-section p {
+            color:white;
+            margin-bottom: 30px;
+        }
+        .login-section input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .login-section button {
+            width: 100%;
+            padding: 10px;
+            background-color: grey;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-section button:hover {
+            background-color: #4b5563;
+        }
+        .login-section a {
+            display: block;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        .info-section {
+            flex: 1;
+            background-color: ;
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .info-section h2 {
+            color: #ffd700;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .info-section p {
+            margin: 10px 0;
+        }
+        .info-section img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-section">
+		
+            <h1>Welcome to EduSpark</h1>
+            <p>Your virtual assistant for grading papers.<br>I'm here to help you save time and optimize your evaluation process.</p>
+            <input type="email" placeholder="Email address" required>
+            <input type="password" placeholder="Password" required>
+         
+			<button class="login-btn" id="loginButton">Login</button>
+  </nav>
+
+  <!-- Rest of your HTML content -->
+
+  <script>
+    document.getElementById('loginButton').addEventListener('click', function() {
+      window.location.href = 'index.html'; // Redirect to login page
+    });
+  </script>
+            <a href="forgot.html">Forgot your password?</a>
+            <a href="signin1.html">No account yet? Create my free account</a>
+			
+        </div>
+        <div class="info-section">
+            <img src="2.jpg" alt="Grading Illustration">
+            <h2>Simplify your grading process</h2>
+            <p>EduSpark revolutionizes the way you grade your students' papers. Save time and ensure fair evaluation.</p>
+        </div>
+    </div>
+</body>
+</html>

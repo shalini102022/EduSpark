@@ -1,0 +1,646 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduSpark</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    header {
+      background: #ffd700;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 35px 30px;
+      align-items: center;
+      border-radius: 15px;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    .logo span {
+      color: yellow;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      padding: 10px 10px;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin: 0 15px;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: yellow;
+      transform: scale(1.1);
+    }
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .login-btn {
+      background: yellow;
+      border: none;
+      padding: 5px 15px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .login-btn:hover {
+      background-color: #e6c200;
+      transform: scale(1.05);
+    }
+    .actions a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .actions a:hover {
+      color: #ffd700;
+      transform: scale(1.2);
+    }
+    .hero-section {
+      background: #1a3c34;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      border-radius: 0 0 10px 10px;
+    }
+    .hero-content {
+      padding: 40px;
+    }
+    .hero-content h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .get-started {
+      background: yellow;
+      border: none;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: block;
+      margin: 0 auto;
+    }
+    .get-started:hover {
+      background-color: #e6c200;
+      transform: scale(1.05);
+    }
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 20px;
+    }
+    .feature {
+      text-align: center;
+      max-width: 300px;
+    }
+    .feature img {
+      width: 300px;
+      height: 300px;
+    }
+    .feature h3 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+    .certificate-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: #f4f4f4;
+    }
+    .certificate-section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .certificate-btn {
+      background: #1a3c34;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: block;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+    .certificate-btn:hover {
+      background-color: #2a5c54;
+      transform: scale(1.05);
+    }
+    .certificate-img {
+      width: 200px;
+      display: block;
+      margin: 0 auto;
+    }
+    .analytics {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .analytics h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .analytics p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .analytics canvas {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .chatbot {
+      padding: 40px 20px;
+      text-align: center;
+      display: none; 
+    }
+    .chatbot.active {
+      display: block; 
+    }
+    .chatbot h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .chatbot-box {
+      background: #f4f4f4;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      height: 400px;
+      overflow-y: auto;
+    }
+    .bot-message, .user-message {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      max-width: 80%;
+    }
+    .bot-message {
+      background: #1a3c34;
+      color: white;
+      text-align: left;
+      align-self: flex-start;
+    }
+    .user-message {
+      background: #ffd700;
+      text-align: right;
+      align-self: flex-end;
+    }
+    .chatbot-input {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      max-width: 600px;
+      margin: 10px auto;
+    }
+    .chatbot-input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .chatbot-input button {
+      background: #1a3c34;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .chatbot-input button:hover {
+      background: #2a5c54;
+    }
+    .chatbot-icon {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #1a3c34;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+    .chatbot-icon:hover {
+      background: #2a5c54;
+      transform: scale(1.1);
+    }
+    .admin-panel {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .admin-panel h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .admin-features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .admin-features div {
+      max-width: 200px;
+    }
+    .admin-features h4 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .cta {
+      text-align: center;
+      padding: 40px 20px;
+      background: white;
+      color: black;
+    }
+    .cta h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .cta-btn {
+      background: #ffd700;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .cta-btn:hover {
+      background-color: white;
+      transform: scale(1.05);
+    }
+    .footer {
+      background: #1a3c34;
+      color: white;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .footer-logo p {
+      margin: 10px 0;
+    }
+    .social-icons a {
+      margin: 0 10px;
+    }
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+    }
+    .footer-links h4 {
+      margin-bottom: 10px;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links li {
+      margin: 5px 0;
+    }
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-links a:hover {
+      color: #ffd700;
+    }
+    .footer-contact p {
+      margin: 5px 0;
+    }
+    .filter-section {
+      padding: 20px;
+      text-align: center;
+    }
+    .filter-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .filter-group input {
+      padding: 5px;
+    }
+    .filter-group button {
+      background: #1a3c34;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .filter-group button:hover {
+      background: #2a5c54;
+    }
+    .papers-section {
+      padding: 20px;
+    }
+    .papers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .paper-card {
+      background: #d4e4d2;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+    }
+    .paper-card button {
+      background: #1a3c34;
+      color: white;
+      border: none;
+      padding: 5px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .paper-card button:hover {
+      background: #2a5c54;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero-section">
+    <nav class="navbar">
+      <div class="logo">Edu<span>Spark</span></div>
+      <ul class="nav-links">
+        <li><a href="index1.html" data-tooltip="Go to the homepage">Home</a></li>
+        <li><a href="grade.html" data-tooltip="Grade your papers instantly">Grade Papers</a></li>
+        <li><a href="papers.html" data-tooltip="View all papers">Papers</a></li>
+        <li><a href="contact.html" data-tooltip="Get in touch with us">Contact us</a></li>
+      </ul>
+      <div class="actions">
+        <button class="login-btn" id="loginButton">Logn in</button>
+        <span><a href="setting.html"><span></span></a></span>
+        <span><a href="setting.html"><span>⚙️</span></a></span>
+      </div>
+    </nav>
+  </header>
+  <div class="hero-content">
+    <h1>Grade your papers with us!</h1>
+    <p>Scan your handwritten papers. Let EduSpark evaluate them and receive accurate grades and feedback in seconds.</p>
+    <button class="get-started" id="getStartedButton">Get Started</button>
+  </div>
+
+  <section class="features">
+    <div class="feature">
+      <img src="3.png" alt="Scan Papers">
+      <h3>Scan your handwritten papers</h3>
+      <p>Just click a photo to get started instantly.</p>
+    </div>
+    <div class="feature">
+      <img src="4.png" alt="Auto Grade">
+      <h3>EduSpark auto-grades your papers</h3>
+      <p>Get scores, comments, and improvement tips.</p>
+    </div>
+    <div class="feature">
+      <img src="5.png" alt="Analytics">
+      <h3>Core Performance Tracking</h3>
+      <p>Understand trends in student learning.</p>
+    </div>
+  </section>
+
+  <section class="certificate-section">
+    <h2>🎓 Get your e-certificates instantly</h2>
+    <button class="certificate-btn">Download Certificate</button>
+    <img src="10.png" alt="Certificate">
+  </section>
+
+  <section class="analytics">
+    <h2>Comprehensive Grade Analytics</h2>
+    <p>EduSpark provides you with visual and numerical insights for every student submission, helping educators and learners make data-driven decisions.</p>
+    <canvas id="gradeAnalyticsChart" width="400" height="200"></canvas>
+  </section>
+
+  <div class="chatbot-icon" id="chatbotIcon">💬</div>
+
+  <section class="chatbot" id="chatbotSection">
+    <h2>Get Instant Help with Our AI Chatbot</h2>
+    <div class="chatbot-box" id="chatbotBox">
+      <div class="bot-message">Hello! I'm EduSpark's AI assistant. How can I help you with grading or managing submissions?</div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatInput" placeholder="Type your message...">
+      <button id="sendMessage">Send</button>
+    </div>
+  </section>
+
+  <section class="admin-panel">
+    <h2>Powerful Admin Dashboard</h2>
+    <div class="admin-features">
+      <div><h4>User Management</h4><p>Manage students, educators, and submissions.</p></div>
+      <div><h4>Analytics & Reporting</h4><p>View all grade analytics and trends.</p></div>
+      <div><h4>Customization</h4><p>Set your own rubrics and grading rules.</p></div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Ready to transform your grading process?</h2>
+    <button class="cta-btn">Try for Free</button>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-logo">
+      <div class="logo">Edu<span>Spark</span></div>
+      <p>Get Great experience with our EduSpark.</p>
+      <div class="social-icons">
+        <a href="https://instagram.com" target="_blank"><img src="6.png" alt="Instagram"></a>
+        <a href="https://facebook.com" target="_blank"><img src="7.png" alt="Facebook"></a>
+        <a href="https://linkedin.com" target="_blank"><img src="9.png" alt="LinkedIn"></a>
+        <a href="https://youtube.com" target="_blank"><img src="8.png" alt="YouTube"></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Access</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="papers.html">Papers</a></li>
+        <li><a href="contact.html">Contact us</a></li>
+        <li><a href="#">Dashboard</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Privacy policy</a></li>
+        <li><a href="#">Terms of services</a></li>
+        <li><a href="#">Cookies policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact us</h4>
+      <p>eduspark.com<br>+94 770 123 456<br>Jaffna, Sri Lanka</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+ 
+    document.getElementById('loginButton').addEventListener('click', function() {
+      window.location.href = 'login1.html';
+    });
+
+    document.getElementById('getStartedButton').addEventListener('click', function() {
+      window.location.href = 'login1.html';
+    });
+
+
+    const chatbotSection = document.getElementById('chatbotSection');
+    const chatbotIcon = document.getElementById('chatbotIcon');
+    chatbotIcon.addEventListener('click', () => {
+      chatbotSection.classList.toggle('active');
+    });
+
+
+    const ctx = document.getElementById('gradeAnalyticsChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Math', 'Science', 'English', 'History', 'Art'],
+        datasets: [{
+          label: 'Average Grade (%)',
+          data: [85, 20, 92, 65, 88],
+          backgroundColor: [
+            'rgba(255, 215, 0, 0.6)', // Gold
+            'rgba(26, 60, 52, 0.6)', // Dark Green
+            'rgba(255, 215, 0, 0.6)',
+            'rgba(26, 60, 52, 0.6)',
+            'rgba(255, 215, 0, 0.6)'
+          ],
+          borderColor: [
+            'rgba(255, 215, 0, 1)',
+            'rgba(26, 60, 52, 1)',
+            'rgba(255, 215, 0, 1)',
+            'rgba(26, 60, 52, 1)',
+            'rgba(255, 215, 0, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: { color: '#333' }
+          },
+          tooltip: {
+            enabled: true,
+            backgroundColor: 'rgba(26, 60, 52, 0.8)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            borderColor: '#ffd700',
+            borderWidth: 1
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 100,
+            title: { display: true, text: 'Grade (%)', color: '#333' },
+            ticks: { color: '#333' }
+          },
+          x: {
+            title: { display: true, text: 'Subjects', color: '#333' },
+            ticks: { color: '#333' }
+          }
+        }
+      }
+    });
+
+  
+    const chatInput = document.getElementById('chatInput');
+    const sendMessage = document.getElementById('sendMessage');
+    const chatbotBox = document.getElementById('chatbotBox');
+
+
+    function getBotResponse(userMessage) {
+      const lowerMessage = userMessage.toLowerCase();
+      if (lowerMessage.includes('analytics')) {
+        return "To view analytics, go to the 'Analytics' tab to see detailed grade insights.";
+      } else if (lowerMessage.includes('grade') || lowerMessage.includes('grading')) {
+        return "Upload your paper via the 'Grade Papers' section, and I'll evaluate it with scores and feedback.";
+      } else if (lowerMessage.includes('certificate')) {
+        return "You can download your e-certificate from the 'Certificates' section after completing a course.";
+      } else {
+        return "I'm here to help! Could you clarify your question? For example, ask about grading, analytics, or certificates.";
+      }
+    }
+
+
+    function addMessage(content, className) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = className;
+      messageDiv.textContent = content;
+      chatbotBox.appendChild(messageDiv);
+      chatbotBox.scrollTop = chatbotBox.scrollHeight; 
+    }
+
+    sendMessage.addEventListener('click', () => {
+      const userMessage = chatInput.value.trim();
+      if (userMessage) {
+        addMessage(userMessage, 'user-message');
+        const botResponse = getBotResponse(userMessage);
+        setTimeout(() => addMessage(botResponse, 'bot-message'), 500); 
+        chatInput.value = ''; 
+      }
+    });
+
+
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage.click();
+      }
+    });
+  </script>
+</body>
+</html>

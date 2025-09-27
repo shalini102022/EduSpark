@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+header {
+  background: #1a3c34;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 35px 30px;
+  align-items: center;
+     border-radius: 15px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: yellow;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  list-style: none;
+  
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: yellow;
+}
+
+.login-btn {
+  background-color: yellow;
+  border: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #e6c200;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.actions a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+
+.actions a:hover {
+  color: white;
+}
+
+.hero {
+  background: white;
+  color: black;
+  text-align: center;
+  padding: 50px;
+  border-radius: 0 0 10px 10px;
+}
+
+.grading-section {
+  display: flex;
+  justify-content: center;
+  gap: 0px;
+  padding: 20px;
+}
+
+.upload-area,
+.paper-details {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.drop-zone {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.drop-zone button {
+  background: #1a3c34;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.paper-details input,
+.paper-details select {
+  display: block;
+  margin: 10px 0;
+  padding: 5px;
+  width: 100%;
+}
+
+.paper-details button {
+  background: #1a3c34;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1A3C34;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #2e2e2e;
+        }
+        p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .name-inputs {
+            display: flex;
+            gap: 10px;
+        }
+        .name-inputs input {
+            flex: 1;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #6b7280;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4b5563;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #2e2e2e;
+            text-decoration: none;
+        }
+        .gdpr {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .gdpr img {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create my account</h1>
+        <p>Your virtual exam grading assistant.</p>
+        <div class="form-group name-inputs">
+            <input type="text" placeholder="First name">
+            <input type="text" placeholder="Last name">
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Email address">
+        </div>
+        <div class="form-group">
+            <input type="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label><input type="checkbox"> I agree to receive the latest Examino updates by email</label>
+        </div>
+        <div class="form-group">
+            <label><input type="checkbox"> I agree to the Terms of Service and Terms of Sale.</label>
+        </div>
+        <button>Sign up free</button>
+        <a href="login1.html">Already have an account? Login</a>
+        <div class="gdpr">
+            
+            Your data is secure and is not used to train artificial intelligence models.
+        </div>
+    </div>
+</body>
+</html>
